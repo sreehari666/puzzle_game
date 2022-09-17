@@ -222,6 +222,7 @@ Color getColor2 (String color) {
                         ),
                     ],)),
                     TextSpan(text: ' moves ',style: TextStyle(fontSize: 20,color:  getColor(themeColor, 800),
+
                     shadows: [
                       Shadow(
                           blurRadius: 5.0,
@@ -273,7 +274,7 @@ Color getColor2 (String color) {
 
                 const SizedBox(width: 100,),
 
-                Center(
+                items != [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] ? Center(
                   child: Container(
                     height: 450,
                     width: 450,
@@ -309,10 +310,11 @@ Color getColor2 (String color) {
                             itemBuilder: (BuildContext context, int index){
                               var ind = index+1;
                               
-                              return InkWell(
+                             return InkWell(
                                 
                                 onTap: (){
                                   
+
                                   print(count_[index]);
                                   var cnt = int.parse(count_[index]);
                                   if((cnt + 4) == w_control){
@@ -362,8 +364,6 @@ Color getColor2 (String color) {
                                     items;
                                     (int.parse(count_[index]) == w_control) ?moveCount++:moveCount;
                                     
-                                    
-                                   
                                   });
                                   print("control $w_control");
                                   print(items);
@@ -412,9 +412,48 @@ Color getColor2 (String color) {
                                   )),
                                   //child: Image.network(images[index])
                                 ),
-                              );  
+                              ); 
                             },  
                           )),
+                  ),
+                ):Center(
+                  child: Container(
+                    height: 450,
+                    width: 450,
+                    
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                        color:  getColor(themeColor, 200),
+                        boxShadow: [
+                          BoxShadow(
+                            color: getColor2(themeColor),
+                            blurRadius: 25.0, // soften the shadow
+                            spreadRadius: 5.0, //extend the shadow
+                            offset: const Offset(
+                              1,
+                              1,
+                              
+                            ),
+                          )
+                        ],
+                    ),
+                    child: Center(
+                      child: RichText(text:TextSpan(
+                      style: const TextStyle(color: Colors.black, fontSize: 75),
+                      children: <TextSpan>[
+                        TextSpan(text: "Winner!!", style: TextStyle(color: getColor(themeColor, 900), shadows: [
+                        Shadow(
+                            blurRadius: 10.0,
+                            color: getColor2(themeColor),
+                            offset: const Offset(5.0, 5.0),
+                            ),
+                        ],)),
+                        
+                        
+                      ],
+                    ),
+                    ),
+                    ),
                   ),
                 ),
 
@@ -596,3 +635,32 @@ Color getColor2 (String color) {
   }
 }
 
+
+enum ConfirmAction { Cancel, Accept}  
+Future<Future<ConfirmAction?>> _asyncConfirmDialog(BuildContext context) async {  
+  return showDialog<ConfirmAction>(  
+    context: context,  
+    barrierDismissible: false, // user must tap button for close dialog!  
+    builder: (BuildContext context) {  
+      return AlertDialog(  
+        title: const Text('Delete This Contact?'),  
+        content: const Text(  
+            'This will delete the contact from your device.'),  
+        actions: <Widget>[  
+          FlatButton(  
+            child: const Text('Cancel'),  
+            onPressed: () {  
+              Navigator.of(context).pop(ConfirmAction.Cancel);  
+            },  
+          ),  
+          FlatButton(  
+            child: const Text('Delete'),  
+            onPressed: () {  
+              Navigator.of(context).pop(ConfirmAction.Accept);  
+            },  
+          )  
+        ],  
+      );  
+    },  
+  );  
+}  
