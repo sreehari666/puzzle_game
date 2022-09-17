@@ -1,18 +1,8 @@
 # puzzle_game
 
-A new Flutter project.
+A puzzle game developed using flutter.
 
 Live website --> https://sreehari666.github.io/puzzle_web/
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot 2022-03-19 004546](https://user-images.githubusercontent.com/61986594/190873377-e715203b-da1d-4f09-90d0-da1d4b793d7b.png)
